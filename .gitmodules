@@ -1,4 +1,3 @@
 [submodule "src"]
 	path = src
-	url = git://github.com/run4flat/tinycc.git
-	fetch = +refs/heads/*:refs/remotes/exsymtab/*
+	url = https://github.com/pipcet/tinycc

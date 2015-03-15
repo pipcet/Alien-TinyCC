@@ -9,3 +9,12 @@ before_install:
   - git submodule update --init
   - perl Build.PL
   - ./Build installdeps
+
+install:
+  - git clone --branch pipcet https://www.github.com/pipcet/perl5
+
+script:
+  - perl ./Build
+  - perl ./Build install
+  - cd src; make clean && ./configure && make && sudo make install
+  - cd perl5; ./Configure -Uusedl -Dusedevel -Dcc=tcc -Dld=ld -Ddynamic_ext=none -Dccflags=-I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Dccdlflags=-fPIC -de && make -k && sudo make -k install && make test
